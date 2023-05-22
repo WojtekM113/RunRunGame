@@ -142,5 +142,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1401803a277a0e48a6a8102c04972e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerRigidbody: {fileID: 694525194812254829, guid: 120640cca599b0e4fa5412a308530df1,
-    type: 3}
+  player: {fileID: 1843809698145750589, guid: 120640cca599b0e4fa5412a308530df1, type: 3}
+  target: {fileID: 0}

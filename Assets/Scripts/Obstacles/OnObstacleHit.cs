@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class CollisionWithObject : MonoBehaviour, ICollision
+public class OnObstacleHit : MonoBehaviour, ITrigger
 {
-
-
-    void ICollision.CollisionWithObstacle() {
+    public void TriggerObject() {
         Debug.Log("Collision!");
         SceneManager.LoadScene("SampleScene");
     }
+
+    
+ 
 }
 
    

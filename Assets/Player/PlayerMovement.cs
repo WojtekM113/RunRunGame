@@ -14,8 +14,7 @@ public class PlayerMovement : MonoBehaviour {
 
     float height = 1;
 
-    
-    
+    private Rigidbody playerRigidbody;
 
     private void MoveLeft() {
 
@@ -36,27 +35,37 @@ public class PlayerMovement : MonoBehaviour {
 
     void  Update() {
         float horizontal = Input.GetAxis("Horizontal");
-        transform.position += Vector3.right * 10.0f * Time.deltaTime;
+        //transform.position += Vector3.right * 10.0f * Time.deltaTime;
 
         //zmieniæ na input system
 
-        if (Input.GetKeyDown(KeyCode.A)) {
+       /* 
+        * if (Input.GetKeyDown(KeyCode.A)) {
             MoveLeft();
         }
         if (Input.GetKeyDown(KeyCode.D)) {
             MoveRight();
 
         }
-       
+       */
         
     
 
-        transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x,height,(positionAxisZ[PositionAxisZXIndex])), Time.deltaTime * 10f) ; 
+        //transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x,height,(positionAxisZ[PositionAxisZXIndex])), Time.deltaTime * 10f) ; 
     }
 
-    
+    private void FixedUpdate() {
+        float horizontal = Input.GetAxis("Horizontal");
+        playerRigidbody.MovePosition(transform.position + new Vector3(1, 0, -horizontal) * 10f *Time.deltaTime);
 
 
+    }
+
+    private void Start() {
+        
+        playerRigidbody = GetComponent<Rigidbody>();
+
+    }
 }
 
 
