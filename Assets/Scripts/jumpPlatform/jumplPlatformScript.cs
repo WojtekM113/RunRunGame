@@ -13,8 +13,8 @@ public class jumplPlatformScript : MonoBehaviour, ITrigger   {
     private float jumpFallSpeed = 1f;
 
     public void TriggerObject() {
-     // playerRigidbody.DOJump(transform.position + new Vector3(0,5,0), 4, 1, 0.5f, true);
-       playerRigidbody.AddForce(new Vector3(0,20,0), ForceMode.Impulse);
+     // playerRigidbody.DOJump(transform.position + new Vector3(5,0,0), 3, 1, 0.5f, false);
+        playerRigidbody.AddForce(new Vector3(0,10,0), ForceMode.Impulse);
     }
     
     void Awake() {

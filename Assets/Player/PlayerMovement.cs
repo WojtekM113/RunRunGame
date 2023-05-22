@@ -14,6 +14,8 @@ public class PlayerMovement : MonoBehaviour {
 
     float height = 1;
 
+    float speedOfThePlayer = 10;
+
     private Rigidbody playerRigidbody;
 
     private void MoveLeft() {
@@ -22,8 +24,7 @@ public class PlayerMovement : MonoBehaviour {
         if (PositionAxisZXIndex < 0) {
             PositionAxisZXIndex = 0;
         }
-
-
+ 
     }
     private void MoveRight() {
         PositionAxisZXIndex++;
@@ -39,25 +40,31 @@ public class PlayerMovement : MonoBehaviour {
 
         //zmieniæ na input system
 
-       /* 
-        * if (Input.GetKeyDown(KeyCode.A)) {
-            MoveLeft();
-        }
-        if (Input.GetKeyDown(KeyCode.D)) {
-            MoveRight();
+         
+          if (Input.GetKeyDown(KeyCode.A)) {
+             MoveLeft();
+         }
+         if (Input.GetKeyDown(KeyCode.D)) {
+             MoveRight();
 
-        }
-       */
-        
-    
+         }
+         
+        //playerRigidbody.MovePosition(transform.position + new Vector3(1, 0, -horizontal) * 10f * Time.deltaTime);
+
 
         //transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x,height,(positionAxisZ[PositionAxisZXIndex])), Time.deltaTime * 10f) ; 
     }
 
     private void FixedUpdate() {
-        float horizontal = Input.GetAxis("Horizontal");
-        playerRigidbody.MovePosition(transform.position + new Vector3(1, 0, -horizontal) * 10f *Time.deltaTime);
 
+
+
+        float horizontal = Input.GetAxis("Horizontal");
+        //playerRigidbody.MovePosition(transform.position + new Vector3(1, 0, 0) * 10f *Time.deltaTime);
+
+        float moveForward =  transform.position.x + 1 * speedOfThePlayer * Time.deltaTime;
+
+        playerRigidbody.MovePosition(new Vector3(moveForward,transform.position.y, positionAxisZ[PositionAxisZXIndex]) );
 
     }
 
