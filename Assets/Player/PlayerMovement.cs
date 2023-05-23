@@ -6,9 +6,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 public class PlayerMovement : MonoBehaviour { 
-    // Start is called before the first frame update
-
-
+ 
     private float[] positionAxisZ = new float[] {3, 0, -3};
     int PositionAxisZXIndex = 1;
 
@@ -36,7 +34,7 @@ public class PlayerMovement : MonoBehaviour {
 
     void  Update() {
         float horizontal = Input.GetAxis("Horizontal");
-        //transform.position += Vector3.right * 10.0f * Time.deltaTime;
+ 
 
         //zmieniæ na input system
 
@@ -50,23 +48,20 @@ public class PlayerMovement : MonoBehaviour {
          }
          
         //playerRigidbody.MovePosition(transform.position + new Vector3(1, 0, -horizontal) * 10f * Time.deltaTime);
-
-
         //transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x,height,(positionAxisZ[PositionAxisZXIndex])), Time.deltaTime * 10f) ; 
     }
 
     private void FixedUpdate() {
+     
 
-
-
-       // float horizontal = Input.GetAxis("Horizontal");
-        //playerRigidbody.MovePosition(transform.position + new Vector3(1, 0, 0) * 10f *Time.deltaTime);
-
+        float horizontalInput = Input.GetAxis("Horizontal");                    
         float moveForward =  transform.position.x + 1 * speedOfThePlayer * Time.deltaTime;
-         
+        float moveHorizontal = Mathf.Clamp(transform.position.z + -horizontalInput * 10f * Time.deltaTime,-3,3);
 
-        playerRigidbody.MovePosition(new Vector3(moveForward, transform.position.y, positionAxisZ[PositionAxisZXIndex]));
-
+ 
+         // playerRigidbody.MovePosition(new Vector3(moveForward, transform.position.y,   positionAxisZ[PositionAxisZXIndex])); or\/
+           playerRigidbody.MovePosition(new Vector3(moveForward, transform.position.y,moveHorizontal));
+ 
     }
 
     private void Start() {
