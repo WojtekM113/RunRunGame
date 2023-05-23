@@ -59,12 +59,13 @@ public class PlayerMovement : MonoBehaviour {
 
 
 
-        float horizontal = Input.GetAxis("Horizontal");
+       // float horizontal = Input.GetAxis("Horizontal");
         //playerRigidbody.MovePosition(transform.position + new Vector3(1, 0, 0) * 10f *Time.deltaTime);
 
         float moveForward =  transform.position.x + 1 * speedOfThePlayer * Time.deltaTime;
+         
 
-        playerRigidbody.MovePosition(new Vector3(moveForward,transform.position.y, positionAxisZ[PositionAxisZXIndex]) );
+        playerRigidbody.MovePosition(new Vector3(moveForward, transform.position.y, positionAxisZ[PositionAxisZXIndex]));
 
     }
 
